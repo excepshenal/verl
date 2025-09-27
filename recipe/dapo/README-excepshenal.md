@@ -43,7 +43,14 @@ python3 examples/data_preprocess/deepscaler.py
 python3 examples/data_preprocess/aime24.py
 ```
 
-6. Start or join the Ray cluster:
+6. Get `envsubst`:
+
+```bash
+sed -i -E 's|https://mirrors.tuna.tsinghua.edu.cn/ubuntu/|http://archive.ubuntu.com/ubuntu/|g' /etc/apt/sources.list
+apt-get update && apt-get install -y gettext-base
+```
+
+7. Start or join the Ray cluster:
 
 ```bash
 ray start --head
@@ -55,7 +62,7 @@ or
 ray start --address='<head_node_ip>:6379'
 ```
 
-7. Submit the job to the Ray cluster:
+8. Submit the job to the Ray cluster:
 
 ```bash
 export WANDB_API_KEY=<your_wandb_api_key>
