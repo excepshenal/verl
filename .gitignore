@@ -124,3 +124,6 @@ logs
 log
 outputs
 .history
+
+# expanded runtime_env with wandb api key
+recipe/dapo/runtime_env_expanded.yaml
