@@ -59,7 +59,8 @@ MODEL_PATH=${MODEL_PATH:-"/models/ds-r1-distill-qwen-1.5b"}
 TRAIN_FILE=${TRAIN_FILE:-"/data/deepscaler/train.parquet"}
 TEST_FILE=${TEST_FILE:-"/data/aime24/test.parquet"}
 
-RUNTIME_ENV=${RUNTIME_ENV:-"${PROJECT_DIR}/recipe/dapo/runtime_env.yaml"}
+RUNTIME_ENV=${RUNTIME_ENV:-"${PROJECT_DIR}/recipe/dapo/runtime_env_expanded.yaml"}
+envsubst < recipe/dapo/runtime_env.yaml > ${RUNTIME_ENV}
 
 # Defaults are set in verl/recipe/dapo/config/dapo_trainer.yaml,
 # which itself references verl/trainer/config/ppo_trainer.yaml.
