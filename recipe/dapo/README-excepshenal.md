@@ -81,3 +81,14 @@ export RAY_ADDRESS="http://${RAY_IP:-localhost}:8265"
 export WANDB_API_KEY=<your_wandb_api_key>
 bash recipe/dapo/run_dapo_ds_r1_distill_qwen_1.5b.sh
 ```
+
+## Continuing training from a local checkpoint
+
+1. Find the node and local dir where the checkpoint is saved. In a multi-node training setup, it may be on any of the nodes. An example local checkpoint dir might be `/tmp/ray/session_2025-09-29_05-49-05_728317_1/runtime_resources/working_dir_files/_ray_pkg_eb5c9de772568772/checkpoints/dapo/ds-r1-distill-qwen-1.5b-exp-2/global_step_200`.
+
+2. Run the training script with the following configs:
+
+```bash
+trainer.resume_mode=resume_path
+trainer.resume_from_path=/tmp/ray/session_2025-09-29_05-49-05_728317_1/runtime_resources/working_dir_files/_ray_pkg_eb5c9de772568772/checkpoints/dapo/ds-r1-distill-qwen-1.5b-exp-2/global_step_200
+```
