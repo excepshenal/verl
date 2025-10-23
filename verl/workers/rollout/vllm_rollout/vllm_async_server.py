@@ -95,6 +95,7 @@ class ExternalZeroMQDistributedExecutor(Executor):
         timeout: Optional[float] = None,
         args: tuple = (),
         kwargs: Optional[dict[str, Any]] = None,
+        non_block: bool = False,
     ) -> list[Any]:
         if isinstance(method, str):
             sent_method = method
