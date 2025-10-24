@@ -311,10 +311,14 @@ class vLLMHttpServerBase:
             await self.run_headless(server_args)
 
     async def run_server(self, args: argparse.Namespace):
+        logger.info(f"1. VLLM_USE_V1 is {os.environ.get('VLLM_USE_V1')}")
+
         engine_args = AsyncEngineArgs.from_cli_args(args)
         usage_context = UsageContext.OPENAI_API_SERVER
         vllm_config = engine_args.create_engine_config(usage_context=usage_context)
         vllm_config.parallel_config.data_parallel_master_port = self._dp_master_port
+
+        logger.info(f"2. VLLM_USE_V1 is {os.environ.get('VLLM_USE_V1')}")
 
         engine_client = AsyncLLM.from_vllm_config(
             vllm_config=vllm_config,
