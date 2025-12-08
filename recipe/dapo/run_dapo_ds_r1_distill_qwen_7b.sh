@@ -43,9 +43,9 @@ tensor_model_parallel_size=1 # 7b model doesn't need TP
 trainer_nnodes=1
 trainer_n_gpus_per_node=8
 trainer_epochs=1 # DeepScaleR contains ~40k rows; with batches of 256, each epoch is around 150 training steps
-trainer_log_val_generations=5
+trainer_log_val_generations=15
 trainer_save_freq=100 # save model every 100 steps
-trainer_test_freq=5 # eval model every 5 steps
+trainer_test_freq=2 # eval model every 2 steps
 trainer_logger='["console","wandb"]'
 
 # Filepaths
